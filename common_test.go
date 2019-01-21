@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-var (
+const (
 	optionsRequest = "OPTIONS rtsp://172.22.0.172/123.ts/?channel=1&token=888888 RTSP/1.0\r\n" +
 		"CSeq: 1\r\n" +
 		"User-Agent: LibVLC/2.1.2 (Dor Streaming Media v1.0.0.3))\r\n\r\n"
@@ -25,12 +25,14 @@ var (
 		"CSeq: 4\r\n" +
 		"User-Agent: dorsvr (Dor Streaming Media v1.0.0.3)\r\n" +
 		"Session: E1155C20\r\n" +
-		"Range: npt=0.000-\r\n"
+		"Range: npt=0.000-\r\n" +
+		"\r\n"
 
 	teardownRequest = "TEARDOWN rtsp://192.168.1.105:8554/test.264?channel=1&token=888888 RTSP/1.0\r\n" +
 		"CSeq: 5\r\n" +
 		"Session: E1155C20\r\n" +
-		"User-Agent: VLC media player (Dor Streaming Media v1.0.0.3))"
+		"User-Agent: VLC media player (Dor Streaming Media v1.0.0.3))\r\n" +
+		"\r\n"
 
 	announceRequest = "ANNOUNCE rtsp://192.168.199.136:8554/asdf?channel=1&token=888888 RTSP/1.0\r\n" +
 		"Content-Type: application/sdp\r\n" +
@@ -53,7 +55,33 @@ var (
 		"a=control:streamid=1\r\n" +
 		"\r\n"
 
-	string1 = "RTSP 200 OK\r\nContent-Type: MeowMix\r\n\t   \n3450"
+	string1 = "RTSP 200 OK\r\nContent-Type: MeowMix\r\n\t   \n3450\r\n"
+)
+
+
+const (
+	// Client to server for presentation and stream objects; recommended
+	DESCRIBE = "DESCRIBE"
+	// Bidirectional for client and stream objects; optional
+	ANNOUNCE = "ANNOUNCE"
+	// Bidirectional for client and stream objects; optional
+	GET_PARAMETER = "GET_PARAMETER"
+	// Bidirectional for client and stream objects; required for Client to server, optional for server to client
+	OPTIONS = "OPTIONS"
+	// Client to server for presentation and stream objects; recommended
+	PAUSE = "PAUSE"
+	// Client to server for presentation and stream objects; required
+	PLAY = "PLAY"
+	// Client to server for presentation and stream objects; optional
+	RECORD = "RECORD"
+	// Server to client for presentation and stream objects; optional
+	REDIRECT = "REDIRECT"
+	// Client to server for stream objects; required
+	SETUP = "SETUP"
+	// Bidirectional for presentation and stream objects; optional
+	SET_PARAMETER = "SET_PARAMETER"
+	// Client to server for presentation and stream objects; required
+	TEARDOWN = "TEARDOWN"
 )
 
 func TestParseRTSPRequestString(t *testing.T) {

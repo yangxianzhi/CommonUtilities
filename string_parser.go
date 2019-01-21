@@ -28,7 +28,7 @@ func (s *StringParser) ParserIsEmpty() bool {
 		return true
 	}
 
-	if -1 == s.startIndex || -1 == s.endIndex {
+	if -1 == s.startIndex || -1 == s.endIndex || s.startIndex == s.endIndex {
 		return true
 	}
 
@@ -44,7 +44,7 @@ func (s *StringParser) ConsumeWord() string {
 }
 
 // ConsumeWhitespace
-//Keeps on going until non-whitespace
+// Keeps on going until non-whitespace
 func (s *StringParser) ConsumeWhitespace(){
 	s.ConsumeUntil(sWhitespaceMask)
 }
@@ -62,7 +62,7 @@ func (s *StringParser) ConsumeUntilDigit() string {
 
 //Returns the current character, doesn't move past it.
 func (s *StringParser) PeekFast() byte {
-	if s.startIndex != -1 {
+	if len(s.buffer) != s.startIndex && s.startIndex != -1 {
 		return s.buffer[s.startIndex]
 	} else {
 		return 0
