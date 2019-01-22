@@ -230,6 +230,26 @@ func Test(t *testing.T) {
 	}
 }
 
+
+func Test1(t *testing.T) {
+	var tests = []struct {
+		input string
+		want  string
+		want1 string
+	}{
+		{"yangxianzhi:123456", "yangxianzhi", "123456"},
+	}
+	for _, test := range tests {
+		s := New(test.input)
+		if got,_:= s.GetThru(':');got!=test.want {
+			t.Errorf("ConsumeUntilStop(%q), %v",test.input,got)
+		}
+		if got:= s.ConsumeUntil(sEOLMask);got!=test.want1 {
+			t.Errorf("ConsumeInteger(%q), %v",test.input,got)
+		}
+	}
+}
+
 // reverse reverses a slice of ints in place.
 func reverse(s []int) {
 	for i, j := 0, len(s)-1; i < j; i, j = i+1, j-1 {
