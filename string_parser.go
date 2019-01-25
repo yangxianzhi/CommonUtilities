@@ -131,14 +131,14 @@ func (s *StringParser) ConsumeLength(inLength int) string {
 
 // ConsumeInteger
 // Returns whatever integer is currently in the stream
-func (s *StringParser) ConsumeInteger() ( outString string, theValue uint8) {
+func (s *StringParser) ConsumeInteger() ( outString string, theValue uint32) {
 	if s.ParserIsEmpty(){
 		return
 	}
 
 	originalStartIndex := s.startIndex
 	for (s.startIndex < s.endIndex) && (s.buffer[s.startIndex] >= '0') && (s.buffer[s.startIndex] <= '9') {
-		theValue = (theValue * 10 ) + (s.buffer[s.startIndex] - '0')
+		theValue = (theValue * 10 ) + uint32(s.buffer[s.startIndex] - '0')
 		s.advanceMark()
 	}
 	outString = s.buffer[originalStartIndex:s.startIndex]

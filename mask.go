@@ -30,6 +30,7 @@ var sNonWordMask = []uint8{
 	1, 1, 1, 1, 1, 1, 1, 1, 1, 1, //240-249
 	1, 1, 1, 1, 1, 1,             //250-255
 }
+var NonWordMask = sNonWordMask
 
 // stop when you hit a word
 var sWordMask = []uint8{
@@ -61,6 +62,7 @@ var sWordMask = []uint8{
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, //240-249
 	0, 0, 0, 0, 0, 0,             //250-255
 }
+var WordMask = sWordMask
 
 // stop when you hit a digit
 var sDigitMask = []uint8{
@@ -91,6 +93,7 @@ var sDigitMask = []uint8{
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, //240-249
 	0, 0, 0, 0, 0, 0,             //250-255
 }
+var DigitMask = sDigitMask
 
 // stop when you hit an eol
 var sEOLMask = []uint8{
@@ -121,6 +124,7 @@ var sEOLMask = []uint8{
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, //240-249
 	0, 0, 0, 0, 0, 0,             //250-255
 }
+var EOLMask = sEOLMask
 
 // skip over whitespace
 var sWhitespaceMask = []uint8{
@@ -151,6 +155,7 @@ var sWhitespaceMask = []uint8{
 	1, 1, 1, 1, 1, 1, 1, 1, 1, 1, //240-249
 	1, 1, 1, 1, 1, 1,             //250-255
 }
+var WhitespaceMask = sWhitespaceMask
 
 // stop when you hit an EOL or whitespace
 var sEOLWhitespaceMask = []uint8{
@@ -181,6 +186,7 @@ var sEOLWhitespaceMask = []uint8{
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, //240-249
 	0, 0, 0, 0, 0, 0,             //250-255
 }
+var EOLWhitespaceMask = sEOLWhitespaceMask
 
 // stop when you hit an EOL, ? or whitespace
 var sEOLWhitespaceQueryMask = []uint8{
@@ -211,6 +217,7 @@ var sEOLWhitespaceQueryMask = []uint8{
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, //240-249
 	0, 0, 0, 0, 0, 0,             //250-255
 }
+var EOLWhitespaceQueryMask = sEOLWhitespaceQueryMask
 
 var sURLStopConditions = []uint8{
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 1, //0-9      //'\t' is a stop condition
@@ -240,3 +247,4 @@ var sURLStopConditions = []uint8{
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, //240-249
 	0, 0, 0, 0, 0, 0,             //250-255
 }
+var URLStopConditions = sURLStopConditions

@@ -1,6 +1,7 @@
 package commonutilities
 
 import (
+	"github.com/yangxianzhi/my-streaming-server/rtsp"
 	"regexp"
 	"strings"
 	"testing"
@@ -247,6 +248,10 @@ func Test1(t *testing.T) {
 		if got:= s.ConsumeUntil(sEOLMask);got!=test.want1 {
 			t.Errorf("ConsumeInteger(%q), %v",test.input,got)
 		}
+	}
+
+	if got:=rtsp.DateHeader(); got != "" {
+		t.Errorf("rtsp.DateHeader(), %v",got)
 	}
 }
 
